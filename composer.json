@@ -1,0 +1,10 @@
+{
+  "require": {
+    "illuminate/support": "^5.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  }
+}
