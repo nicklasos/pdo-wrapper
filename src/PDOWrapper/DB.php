@@ -150,7 +150,7 @@ class DB
      * @param array $params
      * @return array
      */
-    public function selectWithKey($index, $sql, $params = []): array
+    public function selectWithKey(string $index, string $sql, array $params = []): array
     {
         $select = $this->select($sql, $params);
 
