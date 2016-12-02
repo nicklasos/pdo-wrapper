@@ -41,7 +41,7 @@ class DB
         $this->pdo = $pdo;
     }
 
-    public function debug()
+    public function debug(): array
     {
         return $this->debug;
     }
@@ -71,7 +71,7 @@ class DB
      * @param array|mixed $params
      * @return array
      */
-    public function select(string $sql, $params = [])
+    public function select(string $sql, $params = []): array
     {
         return $this->execute($sql, $params)->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -81,7 +81,7 @@ class DB
      * @param array|mixed $params
      * @return array
      */
-    public function selectColumn(string $sql, $params = [])
+    public function selectColumn(string $sql, $params = []): array
     {
         return $this->execute($sql, $params)->fetchAll(PDO::FETCH_COLUMN);
     }
@@ -124,7 +124,7 @@ class DB
      * @param array $params
      * @return array|bool
      */
-    public function selectRow($sql, $params = [])
+    public function selectRow($sql, $params = []): array
     {
         $row = $this->select($sql, $params);
 
@@ -135,7 +135,7 @@ class DB
      * Return one cell
      * @param string $sql
      * @param array $params
-     * @return string|int|bool
+     * @return string|int|bool|null
      */
     public function selectCell($sql, $params = [])
     {
@@ -150,7 +150,7 @@ class DB
      * @param array $params
      * @return array
      */
-    public function selectWithKey($index, $sql, $params = [])
+    public function selectWithKey($index, $sql, $params = []): array
     {
         $select = $this->select($sql, $params);
 
@@ -184,7 +184,7 @@ class DB
      * @param null $name
      * @return string
      */
-    public function lastInsertId($name = null)
+    public function lastInsertId($name = null): string
     {
         return $this->pdo->lastInsertId($name);
     }
