@@ -18,8 +18,12 @@ use PDOStatement;
  *     [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'']
  * ));
  *
- * $user = $db->select('SELECT * FROM users WHERE id = ?', 13);
+ * $user = $db->selectRow('SELECT * FROM users WHERE id = ?', 13);
+ * echo $user['name'];
+ *
  * $users = $db->select('SELECT * FROM users WHERE id IN (?,?,?)', [13, 14, 15]);
+ *
+ * $name = $db->selectCell('SELECT name FROM users WHERE id = 13');
  *
  * @package Plariumed\Utils
  */

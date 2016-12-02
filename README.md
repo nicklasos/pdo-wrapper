@@ -12,7 +12,9 @@ $pdo = new Collections\DB(new DB(new \PDO(
    [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'']
 )));
   
-$user = $db->select('SELECT * FROM users WHERE id = ?', 13);
+$user = $db->selectRow('SELECT * FROM users WHERE id = ?', 13);
+echo $user['name'];
+
 $users = $db->select('SELECT * FROM users WHERE id IN (?,?,?)', [13, 14, 15])
     ->map(function (array $user) {
         return [
@@ -20,5 +22,6 @@ $users = $db->select('SELECT * FROM users WHERE id IN (?,?,?)', [13, 14, 15])
             'name' => $user['nickname'],
         ];
     });
-
+    
+$name = $db->selectCell('SELECT name FROM users WHERE id = 13');
 ```
