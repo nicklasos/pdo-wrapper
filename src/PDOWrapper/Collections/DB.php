@@ -4,6 +4,9 @@ namespace PDOWrapper\Collections;
 use Illuminate\Support\Collection;
 use PDOWrapper\DB as BaseDB;
 
+/**
+ * @mixin \PDOWrapper\DB
+ */
 class DB
 {
     /**
@@ -29,5 +32,10 @@ class DB
     public function selectWithKey(string $index, string $sql, array $params = []): Collection
     {
         return new Collection($this->db->selectWithKey($index, $sql, $params));
+    }
+
+    public function __call($name, $parameters)
+    {
+        return $this->db->$name(...$parameters);
     }
 }

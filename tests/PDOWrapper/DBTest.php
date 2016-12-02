@@ -3,6 +3,7 @@ namespace PDOWrapper;
 
 use PDO;
 use PDOStatement;
+use PDOWrapper\Collections\DB as ColDB;
 
 class DBTest extends \PHPUnit_Framework_TestCase
 {
